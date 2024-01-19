@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>ChatGPT Interface</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./style1.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="./Client.js"></script>
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+    <div class="user-main-container">
+        <div class="user-sidebar">
+            <h4>My files</h4>
+            <ul id="fileList">
+                <!-- <li>Conversation 1</li>
+                <li>Conversation 2</li>
+                <li>Conversation 3</li>
+                <li>Conversation 4</li> -->
+            </ul>
+            <!-- <div class="hist">user-History</div> -->
+        </div>
+        <div class="user-navbar">
+            <button class="navbar-toggle"><i class="fas fa-bars"></i></button>
+            <div class="navbar-menu">
+                <!-- Navbar menu items -->
+            </div>
+        <div class="user-chat-container">
+            
+            <!-- <div class="user-cards-container" style="position: fixed"> -->
+                <!-- <div class="card">Learning Program</div>
+                <div class="card">chatgpt learning</div>
+                <div class="card">Card 3</div> -->
+            <!-- </div> -->
+            <div id="user-chat-messages" style="color: white; position: fixed; margin-top:105px; height: 300px; overflow-y: auto;">
+                <h5>Here is your response:</h5>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="user-chat-messages">
+        <h5>Here is your response:</h5>
+    </div> -->
+
+    <div class="user-input-container">
+        <input list="fileOptions" id="document-name-input" placeholder="Document Name">
+        <datalist id="fileOptions">
+            <!-- The options will be populated dynamically from JavaScript -->
+        </datalist><br>
+
+    <!-- Input field and button
+    <div class="user-input-container">
+        <input type="text" id="document-name-input" placeholder="Document Name"><br>
+         -->
+        <input type="text" id="user_input" placeholder="Type a message...">
+        <button id="user-send-btn">Search</button>
+    </div>
+
+</body>
+
+</html>
