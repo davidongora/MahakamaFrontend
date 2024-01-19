@@ -10,11 +10,12 @@ const PORT = 3080;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './views')));
+app.use(express.static('css'));
 
 //
 const users = [
   { username: 'admin', password: 'admin' },
-//   { username: 'user2', password: 'password2' },
+  { username: 'user2', password: 'password2' },
   // Add more users as needed...
 ];
 // Simple authentication middleware
@@ -28,11 +29,10 @@ app.post('/login', (req, res) => {
   const user = authenticateUser(username, password);
 
   if (user) {
-    // Redirect to admin.html upon successful login
-    res.redirect('./AdminSide.html');
+    // Send a JSON response upon successful login
+    res.json({ message: 'Logged in', redirectUrl: './AdminSide.html' });
   } else {
-    res.redirect('./Client.html')
-    // res.status(401).json({ message: 'Invalid credentials' });
+    res.status(401).json({ message: 'Invalid credentials' });
   }
 });
 

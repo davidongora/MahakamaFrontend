@@ -65,3 +65,10 @@ node_modules/
 # dotenv environment variables file
 .env
 ./FrontEnd/url.js
+settings.json
+
+# Tailwind CSS
+tailwind.config.js
+postcss.config.js
+css/input.css
+node_modules/
