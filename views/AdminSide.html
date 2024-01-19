@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Interface</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./style1.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="./Admin.js"></script>
+</head>
+
+<body>
+    <div class="sidebar-overlay"></div>
+    <div class="user-main-container">
+        <div class="user-sidebar">
+            <h4>My files</h4>
+            <ul id="fileList">
+                <!-- Files will be listed here -->
+            </ul>
+        </div>
+        <div class="user-navbar">
+            <button class="navbar-toggle"><i class="fas fa-bars"></i></button>
+            <div class="navbar-menu">
+                <!-- Navbar menu items -->
+            </div>
+        </div>
+        <div class="user-chat-container">
+            <div class="user-cards-container">
+                <form id="file-upload-form" enctype="multipart/form-data">
+                    <div class="file-insertion">
+                        <div class="file-title">
+                            <span class="drop-icon"></span>
+                            Drop your files here
+                        </div>
+                        <div class="file-input">
+                            <input type="file" name="files" id="drop-files" multiple>
+                            <span class="browse-button">Or browse your files</span>
+                        </div>
+                        <button type="submit">Upload</button>
+                    </div>
+                </form>
+                <h5 id="upload-message" script="upload-message.innerHTML = '';"></h5>
+            </div>
+            <div id="user-chat-messages" style="color: white;">
+                <h5>Here is your response:</h5>
+            </div>
+        </div>
+    </div>
+    <div class="user-input-container">
+        <input type="text" id="user_input" placeholder="Learning program...">
+        <button id="user-send-btn">Search</button>
+    </div>
+    
+</body>
+</html>
