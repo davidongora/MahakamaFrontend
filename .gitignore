@@ -72,3 +72,5 @@ tailwind.config.js
 postcss.config.js
 css/input.css
 node_modules/
+package-lock.json
+package.json
