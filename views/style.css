@@ -1,0 +1,250 @@
+/* Overall layout styles */
+body {
+  background-color: #000000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin-bottom: 0px;
+  height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  /* flex-grow: 1; */
+}
+
+/* Sidebar styles */
+.sidebar {
+  flex: 0 0 250px;
+  background-color: #333;
+  border-right: 1px solid #444;
+  padding: 20px;
+}
+
+.sidebar h4 {
+  color: #fff;
+}
+
+/* Chat container styles */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  margin-bottom: 0px;
+}
+
+#chat-messages {
+  height: 300px; /* Adjust height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-bottom: 0px; /*Add margin to separate from other sections*/
+}
+
+/* Input container styles */
+.input-container {
+  position: absolute;
+  bottom: 0;
+  left: 280px; /* Adjust as per your layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 00px; /* Add any necessary margin */
+  margin-top: -450px;
+}
+
+.input-container input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #666;
+  margin-right: 20px;
+  background-color: #333;
+  color: #fdfdfd;
+  font-size: 16px;
+}
+
+.input-container #send-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #17421f;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* File insertion */
+.file-insertion {
+  width: 1050px;
+  height: 150px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  background-color: #333;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.file-insertion button {
+  width: 100px;
+}
+
+/* LOGIN-PAGE */
+.login-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  color: #f0f0f0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+label {
+  color: #ffffff;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #333;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #04aa3b;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1f639e;
+}
+
+#message {
+  text-align: center;
+  color: #ffffff;
+}
+.user-sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100vh;
+  z-index: 1000;
+  top: 0;
+  left: -250px; /* Initially hide the sidebar */
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  transition: left 0.3s ease; /* Add a transition effect for smoother movement */
+}
+
+.user-sidebar.active {
+  left: 0; /* Show the sidebar when active */
+}
+
+/* Your existing CSS */
+
+/* Navbar toggle button */
+.navbar-toggle {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+/* Styling the bars icon */
+.navbar-toggle i {
+  font-size: 24px;
+}
+
+.user-navbar .navbar-toggle i {
+  font-size: 24px; /* Adjust the font size for the icon */
+  color: #17421f;
+  width: 40px;
+  size: 30px;
+  background-color: #f0eded;
+}
+.sidebar-overlay {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Place it above other content */
+}
+
+.sidebar-overlay.active {
+  display: block; /* Show when active */
+}
+
+/* Media query for small devices */
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    z-index: 1000;
+    overflow-y: auto;
+    padding-top: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* Show sidebar when active */
+  }
+
+  .user-navbar {
+    display: block;
+  }
+
+  .navbar-toggle {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1100;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+  }
+
+  .navbar-menu {
+    display: none;
+  }
+  
+  /* Adjust other styles as needed for small screens */
+}
