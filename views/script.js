@@ -4,6 +4,13 @@ require("firebase/auth"); // If you need it
 
 // Initialize Firebase
 const firebaseConfig = {
+    apiKey: "AIzaSyCAjhwJduEiYLgZEHtk_QnObApv-EuD6PI",
+    authDomain: "cognifuseai-232ac.firebaseapp.com",
+    projectId: "cognifuseai-232ac",
+    storageBucket: "cognifuseai-232ac.appspot.com",
+    messagingSenderId: "210495172549",
+    appId: "1:210495172549:web:ab1723dcab540c0e93a5ac",
+    measurementId: "G-TS2422BMJD"
 };
 firebase.initializeApp(firebaseConfig);
 
