@@ -74,3 +74,5 @@ css/input.css
 node_modules/
 package-lock.json
 package.json
+cognifuseai.json
+serviceAccount.json
