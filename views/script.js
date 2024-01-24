@@ -13,15 +13,23 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             body: JSON.stringify({ username, password })
         });
 
-        const data = await response.json();
+        console.log(response);
 
-        if (response.ok) {
-            document.getElementById('message').innerHTML = `<p>${data.message}</p>`;
-            // Redirect to a new page after successful login
-            window.location.href = './AdminSide.html'; // Redirect to admin.html
-        } else {
-            document.getElementById('message').innerHTML = `<p>${data.message}</p>`;
-        }
+        // if (response.headers.get('Content-Type') === 'application/json' && response.ok) {
+        //     const data = await response.json();
+
+        //     if (response.ok) {
+        //         document.getElementById('message').innerHTML = `<p>${data.message}</p>`;
+        //         // Redirect to a new page after successful login
+        //         window.location.href = './AdminSide.html'; // Redirect to admin.html
+        //     } else {
+        //         document.getElementById('message').innerHTML = `<p>${data.message}</p>`;
+        //     }
+        // } else {
+        //     console.error('Error: Response is not JSON or is empty');
+        // }
+        window.location.href = './AdminSide.html'; // Redirect to admin.html
+        // console.log(response);
     } catch (error) {
         console.error('Error:', error);
     }

@@ -16,7 +16,7 @@ app.use(express.static('img'));
 
 const users = [
   { username: 'admin', password: 'admin' },
-  { username: 'user2', password: 'password2' },
+  // { username: 'user2', password: 'password2' },
   // Add more users as needed...
 ];
 // Simple authentication middleware
@@ -26,15 +26,14 @@ function authenticateUser(username, password) {
 
 // Login endpoint
 app.post('/login', (req, res) => {
-  const { username, password } = req.body;
+  const username = req.body.username;
+  const password = req.body.password;
+
   const user = authenticateUser(username, password);
 
   if (user) {
-    // Redirect to admin.html upon successful login
-    res.redirect('./AdminSide.html');
-  } else {
-    res.redirect('./Client.html')
-    // res.status(401).json({ message: 'Invalid credentials' });
+    // Respond with a JSON object upon successful login
+    res.status(200).json({ success: true, message: 'Login successful', redirectUrl: './AdminSide.html' });
   }
 });
 

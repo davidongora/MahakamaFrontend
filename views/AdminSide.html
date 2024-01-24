@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./style1.css">
+    <link rel="stylesheet" href="/output.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -33,22 +34,26 @@
         </div>
         <div class="user-chat-container">
             <div class="user-cards-container">
-                <form id="file-upload-form" enctype="multipart/form-data">
-                    <div class="file-insertion">
-                        <div class="file-title">
+                <form id="file-upload-form" enctype="multipart/form-data" class="space-y-4">
+                    <div class="file-insertion flex flex-col items-center justify-center p-4 border-2 border-dashed">
+                        <div class="file-title text-lg font-semibold">
                             <span class="drop-icon"></span>
                             Drop your files here
                         </div>
-                        <div class="file-input">
-                            <input type="file" name="files" id="drop-files" multiple>
-                            <span class="browse-button">Or browse your files</span>
+                        <div class="file-input mt-2">
+                            <input type="file" name="files" id="drop-files" multiple class="hidden">
+                            <label for="drop-files" class="cursor-pointer text-blue-600">Or browse your files</label>
                         </div>
-                        <button type="submit">Upload</button>
+                        <button type="submit" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded">Upload</button>
+                    </div>
+                    <!-- Progress bar -->
+                    <div id="upload-progress" class="w-full bg-gray-200 mt-2">
+                        <div id="upload-progress-bar" class="h-2 bg-blue-500"></div>
                     </div>
                 </form>
-                <h5 id="upload-message" script="upload-message.innerHTML = '';"></h5>
+                <h5 id="upload-message" class="text-red-500"></h5>
             </div>
-            <div id="user-chat-messages" style="color: white;">
+            <div id="user-chat-messages" class="text-white">
                 <h5>Here is your response:</h5>
             </div>
         </div>

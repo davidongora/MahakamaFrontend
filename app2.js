@@ -1,69 +1,37 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path'); 
-const config = require('./config');
-const axios = require('axios'); // Add this line
-const admin = require('firebase-admin'); // Add this line if you're using Firebase
+const { default: axios } = require("axios");
+const firebase = require("firebase/app");
+require("firebase/auth"); // If you need it
 
-const app = express();
-const PORT = 3080;
+// Import Firebase config from JSON file
+const firebaseConfig = require('./firebaseConfig.json');
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, './views')));
-app.use(express.static('css'));
-app.use(express.static('img'));  
+firebase.initializeApp(firebaseConfig);
 
-const users = [
-  { username: 'admin', password: 'admin' },
-  { username: 'user2', password: 'password2' },
-];
+document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
 
-function authenticateUser(username, password) {
-  return users.find(user => user.username === username && user.password === password);
-}
+    const email = document.getElementById('username').value; // Assuming 'username' is actually the user's email
+    const password = document.getElementById('password').value;
 
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  const user = authenticateUser(username, password);
+    try {
+        const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+        const user = userCredential.user;
 
-  if (user) {
-    res.json({ message: 'Logged in', redirectUrl: './AdminSide.html' });
-  } else {
-    res.status(401).json({ message: 'Invalid credentials' });
-  }
+        // User is signed in, you can now use the 'user' object for authenticated operations.
+        // for testing purposes, you can log the user object to the console:
+        // alert('user: ' + JSON.stringify(user));
+        // // For example, you can get the user's ID token:
+        // const idToken = await user.getIdToken();
+
+        // You can send this ID token to your server to verify the user's identity. to the login endpoint
+        // axios.post('/login', { idToken });
+        //posting the email and password to the login endpoint
+        axios.post('/login', { email, password });
+
+    } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        console.error('Error:', errorCode, errorMessage);
+    }
 });
-
-app.get('/config', (req, res) => {
-  res.json({ baseUrl: config.baseUrl });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-const loginUserCtr = async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const response = await axios.post(
-      ``, { username, password }
-    );
-
-    const {idToken} = response.data;
-
-    const userRecord = await admin.auth().getUserByEmail(username); // Replace email with username
-    res.json({
-      status: "success",
-      msg: "Login Success",
-      idToken,
-    });
-  } catch(error) {
-    res.status(500).json({
-      status: "error",
-      error,
-    });
-  }
-};
-
-
-
